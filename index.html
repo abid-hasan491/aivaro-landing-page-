@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Cardigans Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Optimized Background to fix lag: Removed expensive background-position animation */
+            background: linear-gradient(135deg, #fff0f5 0%, #fce7f3 100%); /* Soft pink/peach for female theme */
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Floating animation for glass cards - using translate3d for GPU hardware acceleration */
+        @keyframes float {
+            0% { transform: translate3d(0px, 0px, 0px); }
+            50% { transform: translate3d(0px, -8px, 0px); }
+            100% { transform: translate3d(0px, 0px, 0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            color: #1f2937;
+        }
+        
+        .glass-input::placeholder {
+            color: #4b5563;
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #ffffff;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.4);
+        }
+
+        .glass-button {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .glass-button:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.6));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Custom Slider Styles */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transform: scale(0.98);
+            object-fit: cover;
+            border-radius: 1rem;
+            will-change: opacity, transform;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+        
+        /* Decorative Background Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px); /* Reduced blur for performance */
+            z-index: -1;
+            will-change: transform;
+        }
+    </style>
+</head>
+<body class="relative pb-20">
+
+    <!-- Background decorative elements for better glass effect -->
+    <div class="orb bg-rose-300/40 w-96 h-96 top-10 left-10"></div>
+    <div class="orb bg-fuchsia-300/30 w-80 h-80 top-1/3 right-10"></div>
+    <div class="orb bg-pink-400/30 w-96 h-96 bottom-10 left-1/4"></div>
+
+    <header class="pt-10 pb-6 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 drop-shadow-sm tracking-tight">
+            Premium Winter Collection
+        </h1>
+        <p class="text-gray-700 mt-3 text-lg md:text-xl font-medium drop-shadow-sm">
+            Stay warm, stay stylish. Discover our exclusive cardigans.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-8">
+        
+        <!-- Left Column: Product Showcase (Slider) -->
+        <section class="glass rounded-3xl p-4 sm:p-6 floating flex flex-col items-center">
+            
+            <div class="w-full max-w-md relative group">
+                <!-- Slider -->
+                <div class="slider-container bg-black/10 shadow-inner">
+                    <img src="1.png" alt="Cardigan 1" class="slide active">
+                    <img src="2.png" alt="Cardigan 2" class="slide">
+                    <img src="3.png" alt="Cardigan 3" class="slide">
+                    <img src="4.png" alt="Cardigan 4" class="slide">
+                    <img src="5.png" alt="Cardigan 5" class="slide">
+                </div>
+
+                <!-- Slider Controls -->
+                <button onclick="prevSlide()" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full p-3 text-gray-800 transition shadow-lg z-20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full p-3 text-gray-800 transition shadow-lg z-20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                
+                <!-- Slide Indicators -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                    <div class="indicator w-2.5 h-2.5 rounded-full bg-white transition-all duration-300"></div>
+                    <div class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                    <div class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                    <div class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                    <div class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- Product Info & Buy Now -->
+            <div class="mt-8 text-center w-full">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Luxury Cable Knit Cardigan</h2>
+                <p class="text-gray-700 mb-4 font-medium text-lg">Exclusive Design • Ultra Soft • Perfect Fit</p>
+                
+                <!-- Price Section Added -->
+                <div class="mb-3 flex items-center justify-center gap-3">
+                    <span class="text-4xl font-extrabold text-pink-600">৳500</span>
+                    <span class="text-xl text-gray-500 line-through">৳850</span>
+                    <span class="bg-rose-100 text-rose-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Sale</span>
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="mb-5 text-sm text-gray-700 bg-white/40 inline-block px-4 py-2 rounded-xl border border-white/50 shadow-sm">
+                    <span class="block font-medium">🚚 Delivery: Inside Dhaka <strong class="text-pink-600">৳70</strong> | Outside Dhaka <strong class="text-pink-600">৳130</strong></span>
+                </div>
+
+                <!-- Size Selection -->
+                <div class="mb-6 w-full text-center">
+                    <p class="text-sm font-semibold text-gray-700 mb-3">Select Size (সাইজ নির্বাচন করুন)</p>
+                    <div class="flex justify-center gap-4">
+                        <!-- M is selected by default -->
+                        <button type="button" class="size-btn glass w-12 h-12 rounded-full font-bold text-gray-800 transition ring-2 ring-pink-500 bg-white shadow-md" data-size="M">M</button>
+                        <button type="button" class="size-btn glass w-12 h-12 rounded-full font-bold text-gray-800 transition hover:bg-white/60" data-size="L">L</button>
+                        <button type="button" class="size-btn glass w-12 h-12 rounded-full font-bold text-gray-800 transition hover:bg-white/60" data-size="XL">XL</button>
+                    </div>
+                </div>
+                
+                <a href="#order-section" class="glass-button inline-flex items-center justify-center w-full max-w-sm py-4 px-8 rounded-full text-lg font-bold text-gray-900 mx-auto group">
+                    Buy Now (এখুনি কিনুন)
+                    <svg class="w-5 h-5 ml-2 animate-bounce text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Right Column: Order Form -->
+        <section id="order-section" class="glass rounded-3xl p-6 sm:p-10 w-full max-w-lg mx-auto lg:mx-0 mt-8 lg:mt-0 transition-transform duration-500 hover:scale-[1.02]">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-gray-900">Place Your Order</h3>
+                <p class="text-gray-700 mt-2 font-medium">Fast delivery straight to your door.</p>
+            </div>
+
+            <form id="orderForm" class="space-y-6">
+                <!-- Name Input -->
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-gray-800 mb-2">Full Name (আপনার নাম)</label>
+                    <input type="text" id="name" required
+                        class="glass-input w-full px-4 py-3 rounded-xl focus:ring-0 sm:text-sm" 
+                        placeholder="e.g. John Doe">
+                </div>
+
+                <!-- Phone Input -->
+                <div>
+                    <label for="phone" class="block text-sm font-semibold text-gray-800 mb-2">Phone Number (মোবাইল নাম্বার)</label>
+                    <input type="tel" id="phone" required
+                        class="glass-input w-full px-4 py-3 rounded-xl focus:ring-0 sm:text-sm" 
+                        placeholder="01XXXXXXXXX">
+                </div>
+
+                <!-- Address Input -->
+                <div>
+                    <label for="address" class="block text-sm font-semibold text-gray-800 mb-2">Full Address (সম্পূর্ণ ঠিকানা)</label>
+                    <textarea id="address" rows="3" required
+                        class="glass-input w-full px-4 py-3 rounded-xl focus:ring-0 sm:text-sm resize-none" 
+                        placeholder="House No, Road No, Area, City"></textarea>
+                </div>
+
+                <!-- Selected Product Preview -->
+                <div class="bg-white/30 p-4 rounded-xl flex items-center justify-between border border-pink-100 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-white">
+                            <img id="cart-thumbnail" src="1.png" alt="Selected Product" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Selected Product</p>
+                            <p id="cart-item-name" class="text-xs text-gray-700 font-medium">Cardigan Style #1</p>
+                            <p id="cart-item-size" class="text-xs text-pink-600 font-bold mt-0.5">Size: M</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Delivery Note -->
+                    <div class="text-right text-xs text-gray-700 border-l border-pink-200 pl-3">
+                        <p class="font-bold text-gray-900 mb-1">Delivery Charge</p>
+                        <p>In Dhaka: ৳70</p>
+                        <p>Out Dhaka: ৳130</p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" 
+                    class="glass-button w-full flex justify-center py-4 px-4 rounded-xl text-lg font-bold text-gray-900 shadow-md">
+                    Confirm Order (অর্ডার কনফার্ম করুন)
+                </button>
+                <p class="text-xs text-center text-gray-700 mt-4 flex items-center justify-center gap-1">
+                    <svg class="w-4 h-4 text-green-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 19.93C7.06 19.43 4 16.05 4 12C4 7.95 7.06 4.57 11 4.07V19.93ZM13 4.07C16.94 4.57 20 7.95 20 12C20 16.05 16.94 19.43 13 19.93V4.07Z"></path></svg>
+                    You will be redirected to WhatsApp securely.
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // --- State Variables ---
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const cartThumbnail = document.getElementById('cart-thumbnail');
+        const cartItemName = document.getElementById('cart-item-name');
+        const cartItemSize = document.getElementById('cart-item-size');
+        const sizeBtns = document.querySelectorAll('.size-btn');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let selectedSize = 'M'; // Default size
+
+        // --- Size Selection Logic ---
+        sizeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Remove active classes from all buttons
+                sizeBtns.forEach(b => {
+                    b.classList.remove('ring-2', 'ring-pink-500', 'bg-white', 'shadow-md');
+                    b.classList.add('hover:bg-white/60');
+                });
+                
+                // Add active classes to the clicked button
+                const clickedBtn = e.currentTarget;
+                clickedBtn.classList.remove('hover:bg-white/60');
+                clickedBtn.classList.add('ring-2', 'ring-pink-500', 'bg-white', 'shadow-md');
+                
+                // Update state and display in the form area
+                selectedSize = clickedBtn.getAttribute('data-size');
+                cartItemSize.textContent = `Size: ${selectedSize}`;
+            });
+        });
+
+        // --- Slider Logic ---
+        function updateSlider() {
+            // Update slides
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update indicators
+            indicators.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white');
+                    dot.classList.add('w-4'); // expand active dot slightly
+                } else {
+                    dot.classList.remove('bg-white');
+                    dot.classList.remove('w-4');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+
+            // Update Order Form Thumbnail dynamically so user knows what they are buying
+            const currentImgSrc = `${currentSlide + 1}.png`;
+            cartThumbnail.src = currentImgSrc;
+            cartItemName.textContent = `Cardigan Style #${currentSlide + 1}`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        // Auto slide every 4 seconds
+        let slideInterval = setInterval(nextSlide, 4000);
+
+        // Pause auto-slide on hover
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 4000);
+        });
+
+        // --- WhatsApp Form Submission Logic ---
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form refresh
+
+            // 1. Get Form Values
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            
+            // Note: Since WhatsApp web URLs cannot automatically attach image files, 
+            // we clearly state which image/product number they selected based on the slider state.
+            const selectedProduct = `Cardigan Style #${currentSlide + 1} (${currentSlide + 1}.png)`;
+            const price = "500 Taka";
+            const deliveryNote = "(Delivery: Inside Dhaka 70tk, Outside Dhaka 130tk)";
+
+            // 2. Format the WhatsApp Message
+            const message = 
+`🌸 *New Order Request* 🌸
+
+*Product:* ${selectedProduct}
+*Size:* ${selectedSize}
+*Price:* ${price}
+${deliveryNote}
+
+*Customer Details:*
+👤 Name: ${name}
+📞 Phone: ${phone}
+📍 Address: ${address}
+
+I would like to confirm my order for this product.`;
+
+            // 3. Define WhatsApp Number
+            // NOTE TO DEVELOPER/OWNER: Replace '8801700000000' with your actual WhatsApp phone number including country code.
+            // Example for Bangladesh: 8801XXXXXXXXX
+            const whatsappNumber = "8801629797247"; 
+
+            // 4. Encode URL and Redirect
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
