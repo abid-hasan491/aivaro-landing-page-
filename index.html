@@ -2,13 +2,13 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aura Boutique - Luxury Winter Cardigans</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Playfair Display for luxury headings & Inter for crisp text -->
+    <!-- Google Fonts: Playfair Display for luxury headings & Inter for crisp mobile text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -16,21 +16,21 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            /* Soft, non-glaring luxury lavender-cream gradient */
             background: linear-gradient(135deg, #fdf4f7 0%, #f4f0fa 50%, #fce7f3 100%);
             min-height: 100vh;
             color: #2b222c;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .luxury-font {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Hardware accelerated floating animation */
+        /* Hardware accelerated floating animation optimized for mobile */
         @keyframes float {
             0% { transform: translate3d(0px, 0px, 0px); }
-            50% { transform: translate3d(0px, -5px, 0px); }
+            50% { transform: translate3d(0px, -4px, 0px); }
             100% { transform: translate3d(0px, 0px, 0px); }
         }
 
@@ -39,20 +39,21 @@
             will-change: transform;
         }
 
-        /* High-end Liquid Glassmorphism - Soft and calming */
+        /* High-end Liquid Glassmorphism tailored for touch screens */
         .glass-luxury {
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 15px 35px 0 rgba(190, 24, 93, 0.05);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px 0 rgba(190, 24, 93, 0.06);
         }
 
         .glass-input {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(236, 72, 153, 0.2);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(236, 72, 153, 0.25);
+            transition: all 0.25s ease;
             color: #2b222c;
+            font-size: 16px; /* Prevents auto-zoom on mobile safari/chrome */
         }
         
         .glass-input::placeholder {
@@ -60,7 +61,7 @@
         }
 
         .glass-input:focus {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 1);
             border-color: #db2777;
             outline: none;
             box-shadow: 0 0 0 4px rgba(219, 39, 119, 0.12);
@@ -70,12 +71,13 @@
             background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
             color: #ffffff;
             box-shadow: 0 6px 20px rgba(219, 39, 119, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, box-shadow;
+            min-height: 52px;
         }
 
         .glass-button:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         @media (min-width: 768px) {
@@ -89,12 +91,12 @@
         .slider-container {
             position: relative;
             width: 100%;
-            border-radius: 1.5rem;
+            border-radius: 1.25rem;
             overflow: hidden;
             aspect-ratio: 1 / 1;
             touch-action: pan-y;
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .slide {
@@ -104,10 +106,10 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            transform: scale(0.97);
+            transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+            transform: scale(0.98);
             object-fit: cover;
-            border-radius: 1.5rem;
+            border-radius: 1.25rem;
             will-change: opacity, transform;
             user-select: none;
             -webkit-user-drag: none;
@@ -119,20 +121,20 @@
             z-index: 10;
         }
         
-        /* Soft Ambient Orbs */
+        /* Soft Ambient Orbs for visual depth */
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
+            filter: blur(50px);
             z-index: -1;
             will-change: transform;
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
-        /* Floating WhatsApp Button Pulse */
+        /* Floating WhatsApp Button Pulse Animation */
         @keyframes pulse-glow {
             0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
         }
         .whatsapp-float {
             animation: pulse-glow 2.2s infinite;
@@ -140,172 +142,168 @@
         }
     </style>
 </head>
-<body class="relative pb-16 sm:pb-24">
+<body class="relative pb-24 sm:pb-32">
 
-    <!-- Ambient Background Glow Orbs (Calming Pastels) -->
-    <div class="orb bg-pink-200 w-80 h-80 sm:w-96 sm:h-96 top-10 left-5"></div>
-    <div class="orb bg-purple-200 w-72 h-72 sm:w-80 sm:h-80 top-1/2 right-10"></div>
-    <div class="orb bg-rose-100 w-96 h-96 bottom-10 left-1/4"></div>
+    <div class="orb bg-pink-200 w-64 h-64 sm:w-96 sm:h-96 top-5 left-2"></div>
+    <div class="orb bg-purple-200 w-60 h-60 sm:w-80 sm:h-80 top-1/2 right-2"></div>
+    <div class="orb bg-rose-100 w-72 h-72 sm:w-96 sm:h-96 bottom-10 left-1/3"></div>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-pink-900 to-rose-900 text-pink-100 text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm">
+    <div class="bg-gradient-to-r from-pink-900 to-rose-900 text-pink-100 text-xs sm:text-sm py-2 px-3 text-center font-medium shadow-sm">
         ✨ Premium Winter Collection • Cash on Delivery All Over Bangladesh 🚚
     </div>
 
-    <!-- Header Section -->
-    <header class="pt-8 sm:pt-12 pb-4 px-4 text-center">
-        <span class="inline-block uppercase tracking-widest text-xs sm:text-sm font-bold text-pink-600 mb-2 px-4 py-1.5 bg-white/70 rounded-full border border-pink-200 shadow-sm">
+    <header class="pt-6 sm:pt-10 pb-2 px-4 text-center">
+        <span class="inline-block uppercase tracking-widest text-[11px] sm:text-sm font-bold text-pink-600 mb-2 px-3.5 py-1 bg-white/80 rounded-full border border-pink-200 shadow-xs">
             ✨ Aura Boutique Exclusive
         </span>
-        <h1 class="text-3xl sm:text-5xl font-bold text-gray-900 luxury-font tracking-tight">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 luxury-font tracking-tight leading-tight">
             Soft & Cozy Cardigans
         </h1>
-        <p class="text-gray-600 mt-2 text-sm sm:text-base max-w-md mx-auto font-medium">
+        <p class="text-gray-600 mt-1.5 text-xs sm:text-base max-w-sm sm:max-w-md mx-auto font-medium px-2">
             Wrap yourself in pure warmth, elegance, and soft pastel perfection.
         </p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mt-4">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-start mt-2 sm:mt-4">
         
-        <!-- Left Column: Product Showcase & Manual Slider -->
-        <section class="glass-luxury rounded-3xl p-5 sm:p-7 floating flex flex-col items-center">
+        <!-- Left Column: Product Showcase & Manual Touch Slider -->
+        <section class="glass-luxury rounded-2xl sm:rounded-3xl p-4 sm:p-6 floating flex flex-col items-center">
             
-            <div class="w-full max-w-md relative group">
+            <div class="w-full relative group">
                 <!-- Badge Overlay -->
-                <div class="absolute top-3 left-3 z-30 bg-white/85 backdrop-blur-md text-pink-600 text-xs font-bold px-3.5 py-1 rounded-full shadow-sm border border-pink-100 flex items-center gap-1">
+                <div class="absolute top-2.5 left-2.5 z-30 bg-white/90 backdrop-blur-md text-pink-600 text-[11px] font-bold px-3 py-1 rounded-full shadow-xs border border-pink-100 flex items-center gap-1">
                     <span>👑</span> Best Seller
                 </div>
 
                 <!-- Slider Container -->
                 <div class="slider-container shadow-inner" id="slider">
-                    <img src="1.png" alt="Cardigan 1" class="slide active">
-                    <img src="2.png" alt="Cardigan 2" class="slide">
-                    <img src="3.png" alt="Cardigan 3" class="slide">
-                    <img src="4.png" alt="Cardigan 4" class="slide">
-                    <img src="5.png" alt="Cardigan 5" class="slide">
+                    <img src="1.png" alt="Cardigan 1" class="slide active" loading="eager">
+                    <img src="2.png" alt="Cardigan 2" class="slide" loading="lazy">
+                    <img src="3.png" alt="Cardigan 3" class="slide" loading="lazy">
+                    <img src="4.png" alt="Cardigan 4" class="slide" loading="lazy">
+                    <img src="5.png" alt="Cardigan 5" class="slide" loading="lazy">
                 </div>
 
-                <!-- Navigation Arrows -->
-                <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white active:scale-95 backdrop-blur-md rounded-full p-2.5 sm:p-3 text-gray-800 transition shadow-md z-20">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                <!-- Navigation Arrows with touch-friendly sizing -->
+                <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-2.5 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white active:scale-95 backdrop-blur-md rounded-full p-2.5 sm:p-3 text-gray-800 transition shadow-md z-20">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                <button onclick="nextSlide()" aria-label="Next Slide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white active:scale-95 backdrop-blur-md rounded-full p-2.5 sm:p-3 text-gray-800 transition shadow-md z-20">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                <button onclick="nextSlide()" aria-label="Next Slide" class="absolute right-2.5 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white active:scale-95 backdrop-blur-md rounded-full p-2.5 sm:p-3 text-gray-800 transition shadow-md z-20">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 
                 <!-- Dot Indicators -->
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-20 bg-black/10 backdrop-blur-md px-3 py-1.5 rounded-full">
-                    <button onclick="goToSlide(0)" aria-label="Slide 1" class="indicator w-2.5 h-2.5 rounded-full bg-white transition-all duration-300"></button>
-                    <button onclick="goToSlide(1)" aria-label="Slide 2" class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></button>
-                    <button onclick="goToSlide(2)" aria-label="Slide 3" class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></button>
-                    <button onclick="goToSlide(3)" aria-label="Slide 4" class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></button>
-                    <button onclick="goToSlide(4)" aria-label="Slide 5" class="indicator w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></button>
+                <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20 bg-black/15 backdrop-blur-md px-3 py-1.5 rounded-full">
+                    <button onclick="goToSlide(0)" aria-label="Slide 1" class="indicator w-2 h-2 rounded-full bg-white transition-all duration-300"></button>
+                    <button onclick="goToSlide(1)" aria-label="Slide 2" class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></button>
+                    <button onclick="goToSlide(2)" aria-label="Slide 3" class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></button>
+                    <button onclick="goToSlide(3)" aria-label="Slide 4" class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></button>
+                    <button onclick="goToSlide(4)" aria-label="Slide 5" class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></button>
                 </div>
             </div>
 
-            <div class="mt-6 text-center w-full">
-                <h2 class="text-2xl font-bold text-gray-900 luxury-font mb-1">Luxury Knit Cardigan</h2>
-                <p class="text-pink-600 text-sm font-medium mb-3">Ultra Soft Fabric • Elegant Buttons</p>
+            <div class="mt-4 sm:mt-5 text-center w-full">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 luxury-font mb-0.5">Luxury Knit Cardigan</h2>
+                <p class="text-pink-600 text-xs sm:text-sm font-medium mb-2.5">Ultra Soft Fabric • Elegant Buttons</p>
                 
                 <!-- Price Tag -->
-                <div class="mb-4 flex items-center justify-center gap-3">
-                    <span class="text-3xl sm:text-4xl font-extrabold text-pink-600">৳500</span>
-                    <span class="text-lg text-gray-400 line-through">৳950</span>
-                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider border border-pink-200">50% OFF</span>
+                <div class="mb-3 flex items-center justify-center gap-2.5">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-pink-600">৳500</span>
+                    <span class="text-sm sm:text-base text-gray-400 line-through">৳950</span>
+                    <span class="bg-pink-100 text-pink-700 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-pink-200">50% OFF</span>
                 </div>
 
                 <!-- Delivery Badge -->
-                <div class="mb-5 text-xs sm:text-sm text-gray-700 bg-white/80 inline-block px-4 py-2.5 rounded-2xl border border-pink-100 shadow-sm w-full max-w-sm">
+                <div class="mb-4 text-xs text-gray-700 bg-white/85 inline-block px-3.5 py-2 rounded-xl border border-pink-100 shadow-xs w-full">
                     <span class="font-medium">🚚 Delivery: Inside Dhaka <strong class="text-pink-600">৳70</strong> | Outside Dhaka <strong class="text-pink-600">৳130</strong></span>
                 </div>
 
                 <!-- Size Selector -->
-                <div class="mb-6 w-full">
-                    <p class="text-xs sm:text-sm font-bold text-gray-800 mb-2.5 uppercase tracking-wider">Select Size (সাইজ নির্বাচন করুন)</p>
-                    <div class="flex justify-center gap-3">
-                        <button type="button" class="size-btn w-14 h-12 rounded-2xl font-bold text-gray-800 transition ring-2 ring-pink-500 bg-white shadow-md text-sm sm:text-base flex items-center justify-center" data-size="M">M</button>
-                        <button type="button" class="size-btn w-14 h-12 rounded-2xl font-bold text-gray-700 transition bg-white/60 hover:bg-white/90 text-sm sm:text-base flex items-center justify-center border border-white" data-size="L">L</button>
-                        <button type="button" class="size-btn w-14 h-12 rounded-2xl font-bold text-gray-700 transition bg-white/60 hover:bg-white/90 text-sm sm:text-base flex items-center justify-center border border-white" data-size="XL">XL</button>
+                <div class="mb-4 w-full">
+                    <p class="text-[11px] sm:text-xs font-bold text-gray-800 mb-2 uppercase tracking-wider">Select Size (সাইজ নির্বাচন করুন)</p>
+                    <div class="flex justify-center gap-2.5">
+                        <button type="button" class="size-btn w-12 h-11 rounded-xl font-bold text-gray-800 transition ring-2 ring-pink-500 bg-white shadow-sm text-sm flex items-center justify-center" data-size="M">M</button>
+                        <button type="button" class="size-btn w-12 h-11 rounded-xl font-bold text-gray-700 transition bg-white/65 hover:bg-white/90 text-sm flex items-center justify-center border border-white" data-size="L">L</button>
+                        <button type="button" class="size-btn w-12 h-11 rounded-xl font-bold text-gray-700 transition bg-white/65 hover:bg-white/90 text-sm flex items-center justify-center border border-white" data-size="XL">XL</button>
                     </div>
                 </div>
                 
-                <a href="#order-section" class="glass-button inline-flex items-center justify-center w-full max-w-sm py-4 px-6 rounded-2xl text-base sm:text-lg font-bold text-white shadow-lg">
+                <a href="#order-section" class="glass-button inline-flex items-center justify-center w-full py-3.5 px-5 rounded-xl text-sm sm:text-base font-bold text-white shadow-md">
                     Order Now (অর্ডার করুন)
-                    <svg class="w-5 h-5 ml-2 animate-bounce text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    <svg class="w-4 h-4 ml-2 animate-bounce text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
         </section>
 
-        <!-- Right Column: Order Form -->
-        <section id="order-section" class="glass-luxury rounded-3xl p-6 sm:p-9 w-full max-w-lg mx-auto lg:mx-0 shadow-xl">
-            <div class="text-center mb-6">
-                <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 luxury-font">Confirm Your Order</h3>
-                <p class="text-gray-600 mt-1 text-sm font-medium">Fill in your delivery details below.</p>
+        <!-- Right Column: Order Form Section -->
+        <section id="order-section" class="glass-luxury rounded-2xl sm:rounded-3xl p-4 sm:p-7 w-full max-w-md mx-auto lg:mx-0 shadow-lg">
+            <div class="text-center mb-4 sm:mb-5">
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 luxury-font">Confirm Your Order</h3>
+                <p class="text-gray-600 mt-0.5 text-xs sm:text-sm font-medium">Fill in your delivery details below.</p>
             </div>
 
-            <form id="orderForm" class="space-y-4 sm:space-y-5">
+            <form id="orderForm" class="space-y-3.5 sm:space-y-4">
                 <!-- Name -->
                 <div>
-                    <label for="name" class="block text-xs sm:text-sm font-bold text-gray-800 mb-1.5">Full Name (আপনার নাম)</label>
+                    <label for="name" class="block text-xs font-bold text-gray-800 mb-1">Full Name (আপনার নাম)</label>
                     <input type="text" id="name" required
-                        class="glass-input w-full px-4 py-3 rounded-xl text-sm shadow-sm" 
+                        class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm shadow-xs" 
                         placeholder="e.g. Nusrat Jahan">
                 </div>
 
                 <!-- Phone -->
                 <div>
-                    <label for="phone" class="block text-xs sm:text-sm font-bold text-gray-800 mb-1.5">Phone Number (মোবাইল নাম্বার)</label>
+                    <label for="phone" class="block text-xs font-bold text-gray-800 mb-1">Phone Number (মোবাইল নাম্বার)</label>
                     <input type="tel" id="phone" required
-                        class="glass-input w-full px-4 py-3 rounded-xl text-sm shadow-sm" 
+                        class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm shadow-xs" 
                         placeholder="01XXXXXXXXX">
                 </div>
 
                 <!-- Address -->
                 <div>
-                    <label for="address" class="block text-xs sm:text-sm font-bold text-gray-800 mb-1.5">Full Address (সম্পূর্ণ ঠিকানা)</label>
-                    <textarea id="address" rows="3" required
-                        class="glass-input w-full px-4 py-3 rounded-xl text-sm shadow-sm resize-none" 
+                    <label for="address" class="block text-xs font-bold text-gray-800 mb-1">Full Address (সম্পূর্ণ ঠিকানা)</label>
+                    <textarea id="address" rows="2.5" required
+                        class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm shadow-xs resize-none" 
                         placeholder="House/Road No, Area, City"></textarea>
                 </div>
 
                 <!-- Order Live Preview Card -->
-                <div class="bg-white/70 p-4 rounded-2xl flex items-center justify-between border border-pink-200 shadow-sm">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
+                <div class="bg-white/80 p-3 rounded-xl flex items-center justify-between border border-pink-200 shadow-xs">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-white shadow-xs">
                             <img id="cart-thumbnail" src="1.png" alt="Selected Product" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <p class="text-xs text-pink-600 font-bold uppercase tracking-wider">Selected Style</p>
-                            <p id="cart-item-name" class="text-sm font-bold text-gray-900">Cardigan Style #1</p>
-                            <p id="cart-item-size" class="text-xs font-semibold text-gray-700 mt-0.5">Size: M</p>
+                            <p class="text-[10px] text-pink-600 font-bold uppercase tracking-wider">Selected Style</p>
+                            <p id="cart-item-name" class="text-xs font-bold text-gray-900">Cardigan Style #1</p>
+                            <p id="cart-item-size" class="text-[11px] font-semibold text-gray-700">Size: M</p>
                         </div>
                     </div>
                     
-                    <div class="text-right text-xs text-gray-700 border-l border-pink-200 pl-3">
-                        <p class="font-bold text-pink-700 mb-0.5">Price: ৳500</p>
-                        <p class="text-[11px] text-gray-500">Delivery charge applies</p>
+                    <div class="text-right text-[11px] text-gray-700 border-l border-pink-200 pl-2.5">
+                        <p class="font-bold text-pink-700">Price: ৳500</p>
+                        <p class="text-[10px] text-gray-500">Delivery extra</p>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" 
-                    class="glass-button w-full flex justify-center py-4 px-4 rounded-2xl text-base sm:text-lg font-bold text-white shadow-lg">
+                    class="glass-button w-full flex justify-center py-3.5 px-4 rounded-xl text-sm sm:text-base font-bold text-white shadow-md">
                     Confirm Order on WhatsApp 💬
                 </button>
-                <p class="text-xs text-center text-gray-500 mt-2 flex items-center justify-center gap-1">
+                <p class="text-[11px] text-center text-gray-500 mt-1.5 flex items-center justify-center gap-1">
                     🔒 100% Safe & Secure Order Processing
                 </p>
             </form>
         </section>
     </main>
 
-    <!-- Floating WhatsApp Support Button -->
     <a href="https://wa.me/8801629797247?text=Hello,%20I%20need%20some%20help%20with%20your%20cardigan%20collection!" 
        target="_blank" 
        rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20bd5a] transition-colors whatsapp-float flex items-center justify-center group"
+       class="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-xl hover:bg-[#20bd5a] transition-colors whatsapp-float flex items-center justify-center group"
        aria-label="Contact Support on WhatsApp">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
     </a>
@@ -327,13 +325,13 @@
         sizeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 sizeBtns.forEach(b => {
-                    b.classList.remove('ring-2', 'ring-pink-500', 'bg-white', 'shadow-md');
-                    b.classList.add('bg-white/60');
+                    b.classList.remove('ring-2', 'ring-pink-500', 'bg-white', 'shadow-sm');
+                    b.classList.add('bg-white/65');
                 });
                 
                 const clickedBtn = e.currentTarget;
-                clickedBtn.classList.remove('bg-white/60');
-                clickedBtn.classList.add('ring-2', 'ring-pink-500', 'bg-white', 'shadow-md');
+                clickedBtn.classList.remove('bg-white/65');
+                clickedBtn.classList.add('ring-2', 'ring-pink-500', 'bg-white', 'shadow-sm');
                 
                 selectedSize = clickedBtn.getAttribute('data-size');
                 cartItemSize.textContent = `Size: ${selectedSize}`;
@@ -354,10 +352,10 @@
                 if (index === currentSlide) {
                     dot.classList.remove('bg-white/50');
                     dot.classList.add('bg-white');
-                    dot.style.width = '1.25rem';
+                    dot.style.width = '1.125rem';
                 } else {
                     dot.classList.remove('bg-white');
-                    dot.style.width = '0.625rem';
+                    dot.style.width = '0.5rem';
                     dot.classList.add('bg-white/50');
                 }
             });
@@ -382,7 +380,7 @@
             updateSlider();
         }
 
-        // Touch Swipe Gestures for Mobile
+        // Touch Swipe Gestures for Mobile devices
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -396,7 +394,7 @@
         }, { passive: true });
 
         function handleSwipe() {
-            const swipeThreshold = 40;
+            const swipeThreshold = 35;
             if (touchEndX < touchStartX - swipeThreshold) {
                 nextSlide();
             } else if (touchEndX > touchStartX + swipeThreshold) {
