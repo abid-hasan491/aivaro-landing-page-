@@ -144,14 +144,17 @@
 </head>
 <body class="relative pb-24 sm:pb-32">
 
+    <!-- Ambient Orbs -->
     <div class="orb bg-pink-200 w-64 h-64 sm:w-96 sm:h-96 top-5 left-2"></div>
     <div class="orb bg-purple-200 w-60 h-60 sm:w-80 sm:h-80 top-1/2 right-2"></div>
     <div class="orb bg-rose-100 w-72 h-72 sm:w-96 sm:h-96 bottom-10 left-1/3"></div>
 
+    <!-- Top Announcement Bar -->
     <div class="bg-gradient-to-r from-pink-900 to-rose-900 text-pink-100 text-xs sm:text-sm py-2 px-3 text-center font-medium shadow-sm">
         ✨ Premium Winter Collection • Cash on Delivery All Over Bangladesh 🚚
     </div>
 
+    <!-- Header Section -->
     <header class="pt-6 sm:pt-10 pb-2 px-4 text-center">
         <span class="inline-block uppercase tracking-widest text-[11px] sm:text-sm font-bold text-pink-600 mb-2 px-3.5 py-1 bg-white/80 rounded-full border border-pink-200 shadow-xs">
             ✨ Aura Boutique Exclusive
@@ -164,6 +167,7 @@
         </p>
     </header>
 
+    <!-- Main Content Grid -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-start mt-2 sm:mt-4">
         
         <!-- Left Column: Product Showcase & Manual Touch Slider -->
@@ -184,7 +188,7 @@
                     <img src="5.png" alt="Cardigan 5" class="slide" loading="lazy">
                 </div>
 
-                <!-- Navigation Arrows with touch-friendly sizing -->
+                <!-- Navigation Arrows -->
                 <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-2.5 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white active:scale-95 backdrop-blur-md rounded-full p-2.5 sm:p-3 text-gray-800 transition shadow-md z-20">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
@@ -213,9 +217,10 @@
                     <span class="bg-pink-100 text-pink-700 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-pink-200">50% OFF</span>
                 </div>
 
-                <!-- Delivery Badge -->
-                <div class="mb-4 text-xs text-gray-700 bg-white/85 inline-block px-3.5 py-2 rounded-xl border border-pink-100 shadow-xs w-full">
-                    <span class="font-medium">🚚 Delivery: Inside Dhaka <strong class="text-pink-600">৳70</strong> | Outside Dhaka <strong class="text-pink-600">৳130</strong></span>
+                <!-- Delivery Charge Tiers Badge -->
+                <div class="mb-4 text-[11px] sm:text-xs text-gray-700 bg-white/85 p-2.5 rounded-xl border border-pink-100 shadow-xs w-full">
+                    <p class="font-bold text-pink-700 mb-0.5">🚚 Delivery Charges:</p>
+                    <p class="text-gray-600">Inside Dhaka: <strong class="text-gray-900">৳70</strong> | Urban Area: <strong class="text-gray-900">৳100</strong> | Outside Dhaka: <strong class="text-gray-900">৳130</strong></p>
                 </div>
 
                 <!-- Size Selector -->
@@ -259,30 +264,49 @@
                         placeholder="01XXXXXXXXX">
                 </div>
 
+                <!-- Delivery Area Selector -->
+                <div>
+                    <label for="deliveryArea" class="block text-xs font-bold text-gray-800 mb-1">Delivery Area (ডেলিভারি এলাকা)</label>
+                    <select id="deliveryArea" class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm shadow-xs cursor-pointer">
+                        <option value="Inside Dhaka" data-cost="70">Inside Dhaka (৳70)</option>
+                        <option value="Urban Area" data-cost="100">Urban Area (৳100)</option>
+                        <option value="Outside Dhaka" data-cost="130">Outside Dhaka (৳130)</option>
+                    </select>
+                </div>
+
                 <!-- Address -->
                 <div>
                     <label for="address" class="block text-xs font-bold text-gray-800 mb-1">Full Address (সম্পূর্ণ ঠিকানা)</label>
-                    <textarea id="address" rows="2.5" required
+                    <textarea id="address" rows="2" required
                         class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm shadow-xs resize-none" 
                         placeholder="House/Road No, Area, City"></textarea>
                 </div>
 
-                <!-- Order Live Preview Card -->
-                <div class="bg-white/80 p-3 rounded-xl flex items-center justify-between border border-pink-200 shadow-xs">
-                    <div class="flex items-center space-x-2.5">
-                        <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-white shadow-xs">
-                            <img id="cart-thumbnail" src="1.png" alt="Selected Product" class="w-full h-full object-cover">
+                <!-- Order Live Bill Summary Card -->
+                <div class="bg-white/85 p-3.5 rounded-xl border border-pink-200 shadow-xs space-y-2">
+                    <div class="flex items-center justify-between pb-2 border-b border-pink-100">
+                        <div class="flex items-center space-x-2.5">
+                            <div class="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-white shadow-xs">
+                                <img id="cart-thumbnail" src="1.png" alt="Selected Product" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p id="cart-item-name" class="text-xs font-bold text-gray-900">Cardigan Style #1</p>
+                                <p id="cart-item-size" class="text-[11px] font-semibold text-pink-600">Size: M</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-[10px] text-pink-600 font-bold uppercase tracking-wider">Selected Style</p>
-                            <p id="cart-item-name" class="text-xs font-bold text-gray-900">Cardigan Style #1</p>
-                            <p id="cart-item-size" class="text-[11px] font-semibold text-gray-700">Size: M</p>
+                        <div class="text-right">
+                            <p class="text-xs font-bold text-gray-800">৳500</p>
                         </div>
                     </div>
-                    
-                    <div class="text-right text-[11px] text-gray-700 border-l border-pink-200 pl-2.5">
-                        <p class="font-bold text-pink-700">Price: ৳500</p>
-                        <p class="text-[10px] text-gray-500">Delivery extra</p>
+
+                    <div class="flex justify-between text-xs text-gray-600 font-medium">
+                        <span>Delivery (<span id="summary-area-name">Inside Dhaka</span>):</span>
+                        <span id="summary-delivery-cost" class="font-bold text-gray-800">৳70</span>
+                    </div>
+
+                    <div class="pt-1.5 border-t border-pink-100 flex justify-between items-center text-sm font-extrabold text-gray-900">
+                        <span>Total Payable:</span>
+                        <span id="summary-total-price" class="text-pink-600 text-base">৳570</span>
                     </div>
                 </div>
 
@@ -291,13 +315,14 @@
                     class="glass-button w-full flex justify-center py-3.5 px-4 rounded-xl text-sm sm:text-base font-bold text-white shadow-md">
                     Confirm Order on WhatsApp 💬
                 </button>
-                <p class="text-[11px] text-center text-gray-500 mt-1.5 flex items-center justify-center gap-1">
-                    🔒 100% Safe & Secure Order Processing
+                <p class="text-[11px] text-center text-gray-500 mt-1 flex items-center justify-center gap-1">
+                    🔒 100% Safe & Secure Cash on Delivery
                 </p>
             </form>
         </section>
     </main>
 
+    <!-- Floating WhatsApp Support Button -->
     <a href="https://wa.me/8801629797247?text=Hello,%20I%20need%20some%20help%20with%20your%20cardigan%20collection!" 
        target="_blank" 
        rel="noopener noreferrer"
@@ -308,6 +333,7 @@
         </svg>
     </a>
 
+    <!-- JavaScript Logic -->
     <script>
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
@@ -317,6 +343,11 @@
         const sizeBtns = document.querySelectorAll('.size-btn');
         const sliderContainer = document.getElementById('slider');
         
+        const deliveryAreaSelect = document.getElementById('deliveryArea');
+        const summaryAreaName = document.getElementById('summary-area-name');
+        const summaryDeliveryCost = document.getElementById('summary-delivery-cost');
+        const summaryTotalPrice = document.getElementById('summary-total-price');
+
         let currentSlide = 0;
         const totalSlides = slides.length;
         let selectedSize = 'M';
@@ -337,6 +368,21 @@
                 cartItemSize.textContent = `Size: ${selectedSize}`;
             });
         });
+
+        // Update Delivery Calculation Dynamically
+        function updateOrderSummary() {
+            const selectedOption = deliveryAreaSelect.options[deliveryAreaSelect.selectedIndex];
+            const deliveryCost = parseInt(selectedOption.getAttribute('data-cost'));
+            const areaName = selectedOption.value;
+            const productPrice = 500;
+            const total = productPrice + deliveryCost;
+
+            summaryAreaName.textContent = areaName;
+            summaryDeliveryCost.textContent = `৳${deliveryCost}`;
+            summaryTotalPrice.textContent = `৳${total}`;
+        }
+
+        deliveryAreaSelect.addEventListener('change', updateOrderSummary);
 
         // Manual Slider Update Function
         function updateSlider() {
@@ -410,17 +456,22 @@
             const phone = document.getElementById('phone').value.trim();
             const address = document.getElementById('address').value.trim();
             
+            const selectedOption = deliveryAreaSelect.options[deliveryAreaSelect.selectedIndex];
+            const deliveryArea = selectedOption.value;
+            const deliveryCost = selectedOption.getAttribute('data-cost');
+            const productPrice = 500;
+            const totalPrice = productPrice + parseInt(deliveryCost);
+
             const selectedProduct = `Cardigan Style #${currentSlide + 1} (${currentSlide + 1}.png)`;
-            const price = "500 Taka";
-            const deliveryNote = "(Delivery: Inside Dhaka 70tk, Outside Dhaka 130tk)";
 
             const message = 
 `🌸 *New Order Request* 🌸
 
 *Product:* ${selectedProduct}
 *Size:* ${selectedSize}
-*Price:* ${price}
-${deliveryNote}
+*Price:* ৳${productPrice}
+*Delivery Area:* ${deliveryArea} (৳${deliveryCost})
+*Total Payable:* ৳${totalPrice}
 
 *Customer Details:*
 👤 Name: ${name}
@@ -436,7 +487,9 @@ I would like to confirm my order for this product.`;
             window.open(whatsappUrl, '_blank');
         });
 
+        // Initialize
         updateSlider();
+        updateOrderSummary();
     </script>
 </body>
 </html>
