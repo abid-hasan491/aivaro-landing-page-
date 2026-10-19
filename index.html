@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AIVARO - Luxury Winter Cardigans</title>
     
+    <!-- Ultra-Fast Image Preloading (Forces browser to download images immediately) -->
+    <link rel="preload" as="image" href="1.png">
+    <link rel="preload" as="image" href="2.png">
+    <link rel="preload" as="image" href="3.png">
+    <link rel="preload" as="image" href="4.png">
+    <link rel="preload" as="image" href="5.png">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -113,7 +120,7 @@ src="https://www.facebook.com/tr?id=4321307708086695&ev=PageView&noscript=1"
             overflow: hidden;
             aspect-ratio: 1 / 1;
             touch-action: pan-y;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(245, 230, 238, 0.5); /* Soft placeholder tone */
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
         }
 
@@ -124,18 +131,16 @@ src="https://www.facebook.com/tr?id=4321307708086695&ev=PageView&noscript=1"
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-            transform: scale(0.98);
+            transition: opacity 0.2s ease-in-out;
             object-fit: cover;
             border-radius: 1.25rem;
-            will-change: opacity, transform;
+            will-change: opacity;
             user-select: none;
             -webkit-user-drag: none;
         }
 
         .slide.active {
             opacity: 1;
-            transform: scale(1);
             z-index: 10;
         }
         
@@ -199,11 +204,11 @@ src="https://www.facebook.com/tr?id=4321307708086695&ev=PageView&noscript=1"
 
                 <!-- Slider Container -->
                 <div class="slider-container shadow-inner" id="slider">
-                    <img src="1.png" alt="Cardigan 1" class="slide active" loading="eager">
-                    <img src="2.png" alt="Cardigan 2" class="slide" loading="eager">
-                    <img src="3.png" alt="Cardigan 3" class="slide" loading="eager">
-                    <img src="4.png" alt="Cardigan 4" class="slide" loading="eager">
-                    <img src="5.png" alt="Cardigan 5" class="slide" loading="eager">
+                    <img src="1.png" alt="Cardigan 1" class="slide active" fetchpriority="high" decoding="sync">
+                    <img src="2.png" alt="Cardigan 2" class="slide" decoding="async">
+                    <img src="3.png" alt="Cardigan 3" class="slide" decoding="async">
+                    <img src="4.png" alt="Cardigan 4" class="slide" decoding="async">
+                    <img src="5.png" alt="Cardigan 5" class="slide" decoding="async">
                 </div>
 
                 <!-- Navigation Arrows -->
@@ -353,13 +358,6 @@ src="https://www.facebook.com/tr?id=4321307708086695&ev=PageView&noscript=1"
 
     <!-- JavaScript Logic -->
     <script>
-        // INSTANT IMAGE PRELOADER: Preloads 1.png to 5.png in the browser cache immediately on page load
-        const preloadImages = ['1.png', '2.png', '3.png', '4.png', '5.png'];
-        preloadImages.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
-
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
         const cartThumbnail = document.getElementById('cart-thumbnail');
