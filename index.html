@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Aura Boutique - Luxury Winter Cardigans</title>
+    <title>AIVARO - Luxury Winter Cardigans</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,6 +11,24 @@
     <!-- Google Fonts: Playfair Display for luxury headings & Inter for crisp mobile text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4321307708086695');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4321307708086695&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -95,7 +113,7 @@
             overflow: hidden;
             aspect-ratio: 1 / 1;
             touch-action: pan-y;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
         }
 
@@ -106,7 +124,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
             transform: scale(0.98);
             object-fit: cover;
             border-radius: 1.25rem;
@@ -157,7 +175,7 @@
     <!-- Header Section -->
     <header class="pt-6 sm:pt-10 pb-2 px-4 text-center">
         <span class="inline-block uppercase tracking-widest text-[11px] sm:text-sm font-bold text-pink-600 mb-2 px-3.5 py-1 bg-white/80 rounded-full border border-pink-200 shadow-xs">
-            ✨ Aura Boutique Exclusive
+            ✨ AIVARO Exclusive
         </span>
         <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 luxury-font tracking-tight leading-tight">
             Soft & Cozy Cardigans
@@ -182,10 +200,10 @@
                 <!-- Slider Container -->
                 <div class="slider-container shadow-inner" id="slider">
                     <img src="1.png" alt="Cardigan 1" class="slide active" loading="eager">
-                    <img src="2.png" alt="Cardigan 2" class="slide" loading="lazy">
-                    <img src="3.png" alt="Cardigan 3" class="slide" loading="lazy">
-                    <img src="4.png" alt="Cardigan 4" class="slide" loading="lazy">
-                    <img src="5.png" alt="Cardigan 5" class="slide" loading="lazy">
+                    <img src="2.png" alt="Cardigan 2" class="slide" loading="eager">
+                    <img src="3.png" alt="Cardigan 3" class="slide" loading="eager">
+                    <img src="4.png" alt="Cardigan 4" class="slide" loading="eager">
+                    <img src="5.png" alt="Cardigan 5" class="slide" loading="eager">
                 </div>
 
                 <!-- Navigation Arrows -->
@@ -286,7 +304,7 @@
                 <div class="bg-white/85 p-3.5 rounded-xl border border-pink-200 shadow-xs space-y-2">
                     <div class="flex items-center justify-between pb-2 border-b border-pink-100">
                         <div class="flex items-center space-x-2.5">
-                            <div class="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-white shadow-xs">
+                            <div class="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-white shadow-xs bg-pink-50">
                                 <img id="cart-thumbnail" src="1.png" alt="Selected Product" class="w-full h-full object-cover">
                             </div>
                             <div>
@@ -335,6 +353,13 @@
 
     <!-- JavaScript Logic -->
     <script>
+        // INSTANT IMAGE PRELOADER: Preloads 1.png to 5.png in the browser cache immediately on page load
+        const preloadImages = ['1.png', '2.png', '3.png', '4.png', '5.png'];
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
         const cartThumbnail = document.getElementById('cart-thumbnail');
@@ -448,7 +473,7 @@
             }
         }
 
-        // Order Form WhatsApp Integration
+        // Order Form WhatsApp Integration with FB Pixel Event
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -464,8 +489,19 @@
 
             const selectedProduct = `Cardigan Style #${currentSlide + 1} (${currentSlide + 1}.png)`;
 
+            // ----------------------------------------------------
+            // Facebook Pixel: Purchase Event Tracking
+            // ----------------------------------------------------
+            if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                    value: totalPrice,
+                    currency: 'BDT'
+                });
+            }
+            // ----------------------------------------------------
+
             const message = 
-`🌸 *New Order Request* 🌸
+`🌸 *New Order Request (AIVARO)* 🌸
 
 *Product:* ${selectedProduct}
 *Size:* ${selectedSize}
